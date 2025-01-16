@@ -1,0 +1,28 @@
+<%- include('../includes/head.ejs') %>
+</head>
+
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+    <%- include('../includes/navigation.ejs') %>
+    <main style="max-width: 800px; margin: 20px auto; padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <% if(orders.length > 0) { %>
+            <ul style="list-style: none; padding: 0; margin: 0;">
+                <% orders.forEach(order => { %>
+                    <li style="padding: 15px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 6px; background-color: #f9f9f9; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);">
+                        <span style="font-weight: bold; color: #333; margin-bottom: 10px; display: block;">Order Id: <%= order._id %></span>
+                        <ul style="list-style: none; padding-left: 20px; margin: 10px 0 0;">
+                            <% order.products.forEach(item => { %>
+                                <li style="padding: 5px 0; color: #555; font-size: 14px;">
+                                    <%= item.product.title %> (<%= item.quantity %>)
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } else { %>
+            <h1 style="text-align: center; color: #666; font-size: 24px; margin-top: 50px;">Nothing there!</h1>
+        <% } %>
+    </main>
+
+    <%- include('../includes/end.ejs') %>
+</body>

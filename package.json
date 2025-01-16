@@ -1,0 +1,43 @@
+{
+  "name": "section-11-understanding-sequelize",
+  "version": "1.0.0",
+  "description": "Section 11 - Understanding Sequelize - NodeJS - The Complete Guide",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Anik",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anik7303/nodejs-the-complete-guide.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "Express",
+    "MySQL",
+    "Sequelize"
+  ],
+  "bugs": {
+    "url": "https://github.com/Anik7303/nodejs-the-complete-guide/issues"
+  },
+  "homepage": "https://github.com/Anik7303/nodejs-the-complete-guide#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-mongodb-session": "^5.0.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "express-session": "^1.18.1",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.4",
+    "mysql2": "^2.1.0",
+    "nodemailer": "^6.9.16",
+    "nodemailer-sendgrid-transport": "^0.2.0",
+    "sequelize": "^5.21.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
