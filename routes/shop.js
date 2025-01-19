@@ -1,5 +1,5 @@
 const express = require('express');
-const isAuth=require('../middleware/is-auth');
+const isAuth= require('../middleware/is-auth');
 
 
 const shopController = require('../controllers/shop');
