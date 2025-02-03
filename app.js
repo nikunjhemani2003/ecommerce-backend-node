@@ -4,6 +4,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
+const csrf = require('csurf');
+const flash=require('connect-flash');
+const nodemailer = require('nodemailer');
+const nodemailerSendgrid = require('nodemailer-sendgrid');
+
+process.env.NODE_NO_WARNINGS = 1;
+
 
     var store = new MongoDBStore({
         uri: 'mongodb+srv://nikunjhemani2424:GjjG8zblahI3oa7G@cluster0.2j1iv.mongodb.net/shop?retryWrites=true&w=majority&appName=Cluster0',
@@ -23,6 +30,10 @@ const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 const User=require('./models/user.js');
 
+const csrfProtection = csrf();
+app.use(flash());
+
+
 
 app.set('view engine', 'ejs');
 
@@ -35,6 +46,8 @@ app.use(
     session({secret:"my secret",resave:false,saveUninitialized:false,store: store,})
 );
 
+app.use(csrfProtection);
+
 app.use((req, res, next) => {
     if(!req.session.user){
         return next();
@@ -45,6 +58,12 @@ app.use((req, res, next) => {
             next();
         })
         .catch(err => console.log(err));
+})
+
+app.use((req,res,next)=>{
+    res.locals.isAuthenticated=req.session.isLoggedIn;
+    res.locals.csrfToken=req.csrfToken();
+    next();
 })
 
 app.use('/admin', adminRoutes);

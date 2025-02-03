@@ -6,6 +6,11 @@
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main>
+            <% if(errorMessage){ %>
+                <div class="user-message user-message--error">
+                    <%= errorMessage %>
+                </div>
+            <% } %>
         <form class="login-form" action="/login" method="POST">
             <div class="form-control">
                 <label for="email">Email</label>
@@ -16,6 +21,10 @@
                 <input type="password" name="password" id="password">
             </div>
             <button class="btn" type="submit">Login</button>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
         </form>
+        <div class="centered">
+            <a href="/reset">Reset Password</a>
+        </div>
     </main>
 <%- include('../includes/end.ejs') %>

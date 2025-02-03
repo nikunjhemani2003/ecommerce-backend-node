@@ -116,7 +116,7 @@ module.exports.postOrder = (req, res, next) => {
             console.log(products);
             const order=new Order({
                 user:{
-                    name:req.session.user.name,
+                    email:req.user.email,
                     userId:req.session.user._id
                 },
                 products:products,
